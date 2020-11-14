@@ -1,0 +1,58 @@
+---
+title: "Milestone Report"
+author: "Daniel Grant"
+date: "SAT 14 NOV 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+  
+## Introduction  
+This is a milestone report to brief the audience on the status of our analysis in its current state. We are building an exploratory analysis of multiple samples of text datasets. In addition, we will project our intended path of building a predictive text application to complete the project. This project is being done to satisfy the capstone requirements for the Data Science Specialization offered by Johns Hopkins University through Coursera.
+  
+```{r packages, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(lubridate)
+library(qdap)
+library(tm)
+library(RWeka)
+library(caret)
+```
+  
+## Task 0  
+First, we have to gather our data which will be the provided english datasets from twitter, a selection of blogs, and a selection of news stories.  
+  
+```{r readData1}
+#####
+# Use this if downloading for the first time
+    
+# Establish data link
+# url <- "https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip"
+# temp <- tempfile()
+# download.file(url, temp)
+    
+# Read in data
+# tweets <- read_lines(unz(temp, "final/en_US/en_US.twitter.txt"))
+# blogs <- read_lines(unz(temp,"final/en_US/en_US.blogs.txt"))
+# news <- read_lines(unz(temp,"final/en_US/en_US.news.txt"))
+    
+# Close data link
+# unlink(url)
+#####
+
+
+#####
+# Use this if already downloaded and unzipped data
+tweets <- read_lines("en_US.twitter.txt")
+blogs  <- read_lines("en_US.blogs.txt")
+news   <- read_lines("en_US.news.txt")
+#####
+
+```
+
+## Task 0B - Questions to Answer  
+Here are a handful of questions offered for pursuit by the course instructors within the scope of Task 0.  
+```{r Task0QuestionsA}
+```
