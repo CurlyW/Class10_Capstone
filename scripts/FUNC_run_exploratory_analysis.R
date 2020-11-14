@@ -1,5 +1,5 @@
-# Title     : TODO
-# Objective : TODO
+# Title     : FUNC_run_exploratory_analysis.R
+# Objective : To execute a standard set of evaluations to test for assumptions
 # Created by: grant
 # Created on: 11/7/2020
 
@@ -21,107 +21,107 @@ run_EDA <- function(dataset){
   ##### Custom Functions
 
   not_empty <- function(vector_data){
-    count = sum(!is.na(vector_data))
+    count <- sum(!is.na(vector_data))
     return(count)
   }
 
   empty <- function(vector_data){
-    count = sum(is.na(vector_data))
+    count <- sum(is.na(vector_data))
     return(count)
   }
 
   unique_count <- function(vector_data){
-    count = length(sort(unique(vector_data)))
+    count <- length(sort(unique(vector_data)))
     return(count)
   }
 
   mean_custom <- function(vector_data){
     if(class(vector_data) %in% c('integer', 'numeric')){
-      count = mean(vector_data, na.rm = TRUE)
+      count <- mean(vector_data, na.rm = TRUE)
     } else {
-      count = NA_integer_
+      count <- NA_integer_
     }
     return(count)
   }
 
   sd_custom <- function(vector_data){
     if(class(vector_data) %in% c('integer', 'numeric')){
-      count = sd(vector_data, na.rm = TRUE)
+      count <- sd(vector_data, na.rm = TRUE)
     } else {
-      count = NA_integer_
+      count <- NA_integer_
     }
     return(count)
   }
 
   min_custom <- function(vector_data){
     if(class(vector_data) %in% c('integer', 'numeric')){
-      count = min(vector_data, na.rm = TRUE)
+      count <- min(vector_data, na.rm = TRUE)
     } else {
-      count = NA_integer_
+      count <- NA_integer_
     }
     return(count)
   }
 
   max_custom <- function(vector_data){
     if(class(vector_data) %in% c('integer', 'numeric')){
-      count = max(vector_data, na.rm = TRUE)
+      count <- max(vector_data, na.rm = TRUE)
     } else {
-      count = NA_integer_
+      count <- NA_integer_
     }
     return(count)
   }
 
   med_custom <- function(vector_data){
     if(class(vector_data) %in% c('integer', 'numeric')){
-      count = median(vector_data, na.rm = TRUE)
+      count <- median(vector_data, na.rm = TRUE)
     } else {
-      count = NA_integer_
+      count <- NA_integer_
     }
     return(count)
   }
 
   q25 <- function(vector_data){
     if(class(vector_data) %in% c('integer', 'numeric')){
-      count = quantile(vector_data, probs = 0.25, na.rm = TRUE)
+      count <- quantile(vector_data, probs = 0.25, na.rm = TRUE)
     } else {
-      count = NA_integer_
+      count <- NA_integer_
     }
     return(count)
   }
 
   q75 <- function(vector_data){
     if(class(vector_data) %in% c('integer', 'numeric')){
-      count = quantile(vector_data, probs = 0.75, na.rm = TRUE)
+      count <- quantile(vector_data, probs = 0.75, na.rm = TRUE)
     } else {
-      count = NA_integer_
+      count <- NA_integer_
     }
     return(count)
   }
 
   labels_flag_custom <- function(vector_data){
-    if(class(vector_data) %in% c('character')){
+    if(class(vector_data) %in% 'character'){
       if(length(vector_data[!is.na(vector_data)]) > 3 *
          length(sort(unique(vector_data)))){
-        count = 'Y'
+        count <- 'Y'
       } else {
-        count = 'N'
+        count <- 'N'
       }
     } else {
-      count = 'N'
+      count <- 'N'
     }
     return(count)
   }
 
   labels_custom <- function(vector_data){
-    if(class(vector_data) %in% c('character')){
+    if(class(vector_data) %in%'character'){
       if(length(vector_data[!is.na(vector_data)]) > 3 *
          length(sort(unique(vector_data)))){
-        count = paste0(sort(unique(vector_data)), collapse = ", ")
+        count <- paste0(sort(unique(vector_data)), collapse = ", ")
       } else {
-        count = NA_character_
+        count <- NA_character_
       }
     } else {
-      count = NA_character_
+      count <- NA_character_
     }
     return(count)
   }
@@ -179,9 +179,9 @@ run_EDA <- function(dataset){
   # Combine all tables
   df5 <-
     df1 %>%
-    left_join(df2, by = c("Columns")) %>%
-    left_join(df3, by = c("Columns")) %>%
-    left_join(df4, by = c("Columns"))
+    left_join(df2, by = "Columns") %>%
+    left_join(df3, by = "Columns") %>%
+    left_join(df4, by = "Columns")
 
   return(df5)
 
